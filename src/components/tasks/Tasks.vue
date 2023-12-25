@@ -23,7 +23,11 @@
 
 <script setup>
 import {computed, ref} from "vue";
+import {useToast} from 'primevue/usetoast'
 import TaskActions from "./TaskActions.vue";
+
+const toast = useToast();
+
 const props = defineProps({
   task: Object
 })
@@ -43,15 +47,6 @@ const closeEdit = ()=>{
     isEdit.value = false
     editingTask.value = props.task.name
 }
-//box notice delete task
-const handleDelete = () =>{
-  if(confirm('Are you sure?')){
-    emit('delete',props.task)
-  }
-
-
-}
-
 
 const vFocus = {
   mounted:(el) => el.focus()
@@ -62,12 +57,37 @@ const updateTask = event =>{
   emit('updated',updatedTask)
   closeEdit()
   editingTask.value = event.target.value // rewrite editing task
+  toast.add({
+    summary:"updated",
+    life:4000,
+    severity:"success",
+    detail:"update successfully"
+  })
 }
 // mark task as completed
 const markTaskAsCompleted = event =>{
   const updatedTask = {...props.task , is_completed : !props.task.is_completed }
   emit('markTaskAsCompleted', updatedTask)
+  toast.add({
+    summary:"completed",
+    life:4000,
+    severity:"success",
+    detail:"completed successfully"
+  })
 }
+//box notice delete task
+const handleDelete = () =>{
+  if(confirm('Are you sure?')){
+    emit('delete',props.task)
+    toast.add({
+      summary:"deleted",
+      life:4000,
+      severity:"success",
+      detail:"deleted successfully"
+    })
+  }
+}
+
 
 </script>
 <style>

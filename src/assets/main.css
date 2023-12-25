@@ -2,7 +2,9 @@ body{
     margin-top:20px;
     background: #f8f8f8;
 }
-
+.active button{
+    font-weight:bolder;
+}
 .todo-nav {
     margin-top: 10px
 }

@@ -3,15 +3,22 @@
     <Tasks v-for="task in tasks"
            :task="task"
            :key="task.id"
-           @updated="$event=>$emit('updated',$event)"
-           @markTaskAsCompleted = "$event=>$emit('markTaskAsCompleted',$event)"
-           @delete="$event=>$emit('delete',$event)"
+           @updated="handleUpdateTask"
+           @markTaskAsCompleted = "handleMarkCompleted"
+           @delete="handleDelete"
     />
   </div>
 </template>
 
 <script setup>
+import {useTaskStore} from "@/stores/task.js";
 import Tasks from "./Tasks.vue"
+
+const store = useTaskStore()
+
+const {handleUpdateTask, handleMarkCompleted, handleDelete} = store
+
+
 defineProps({
   tasks: Array,
   show: {
