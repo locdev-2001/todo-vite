@@ -4,7 +4,6 @@
       <div class="d-flex align-items-center">
         <router-link class="navbar-brand" :to="{name:'home'}"><button type="button" class="btn btn-lg">ToDoe<strong>List</strong></button></router-link>
         <router-link class="nav-link" :to="{name : 'tasks'}"><button type="button" class="btn">Tasks</button></router-link>
-        <router-link class="nav-link" :to="{name : 'summary'}"><button type="button" class="btn">Summary</button></router-link>
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

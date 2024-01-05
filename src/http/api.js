@@ -1,6 +1,6 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL:"http://laravel-api.com/api/v1/",
+    baseURL:"https://laravel-api.io.vn/api/v1/",
 })
 export default api
